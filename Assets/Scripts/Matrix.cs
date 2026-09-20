@@ -515,7 +515,7 @@ public struct Mat4x4
         return new Vec3(resX * invW, resY * invW, resZ * invW);
     }
 
-    private Vec3 MultiplyPoint3x4(Vec3 point)
+    public Vec3 MultiplyPoint3x4(Vec3 point)
     {
         return new Vec3
         (
@@ -525,7 +525,7 @@ public struct Mat4x4
         );
     }
 
-    private Vec3 MultiplyVector(Vec3 vector)
+    public Vec3 MultiplyVector(Vec3 vector)
     {
         return new Vec3
         (

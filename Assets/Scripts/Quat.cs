@@ -106,7 +106,7 @@ public struct Quat
 
     public static float Dot(Quat a, Quat b) => a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
 
-    static Quat Euler(Vec3 euler)
+   public static Quat Euler(Vec3 euler)
     {
         float cx = (float)Math.Cos(euler.x * Mathf.Deg2Rad / 2);
         float sx = (float)Math.Sin(euler.x * Mathf.Deg2Rad / 2);
@@ -130,7 +130,7 @@ public struct Quat
 
     static Quat EulerRotation(Vec3 euler) => Euler(euler);
 
-    static Quat FromToRotation(Vec3 fromDirection, Vec3 toDirection)
+    public static Quat FromToRotation(Vec3 fromDirection, Vec3 toDirection)
     {
         Vec3 from = fromDirection.normalized;
         Vec3 to = toDirection.normalized;
@@ -186,12 +186,12 @@ public struct Quat
         return Normalize(q);
     }
 
-    static Quat LookRotation(Vec3 forward)
+    public static Quat LookRotation(Vec3 forward)
     {
         return LookRotation(forward, new Vec3(0, 1, 0));
     }
 
-    static Quat LookRotation(Vec3 forward, [DefaultValue("Vec3.up")] Vec3 upwards)
+   public static Quat LookRotation(Vec3 forward, [DefaultValue("Vec3.up")] Vec3 upwards)
     {
         Vec3 fwd = forward.normalized;
         
