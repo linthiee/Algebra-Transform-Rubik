@@ -320,7 +320,7 @@ namespace CustomMath
             for (int i = 0; i < directions.Length; i++)
                 transformedDirections[i] = TransformDirection(directions[i]);
         }
-        
+
         public void TransformDirections(Span<Vec3> directions) => TransformDirections(directions, directions);
 
         public Vec3 InverseTransformDirection(Vec3 direction) => Quat.Inverse(this.rotation) * direction;
@@ -337,8 +337,9 @@ namespace CustomMath
             for (int i = 0; i < directions.Length; i++)
                 transformedDirections[i] = InverseTransformDirection(directions[i]);
         }
-        
-        public void InverseTransformDirections(Span<Vec3> directions) => InverseTransformDirections(directions, directions);
+
+        public void InverseTransformDirections(Span<Vec3> directions) =>
+            InverseTransformDirections(directions, directions);
 
         public Vec3 TransformVector(Vec3 vector) => this.localToWorldMatrix.MultiplyVector(vector);
 
@@ -361,7 +362,7 @@ namespace CustomMath
             for (int i = 0; i < vectors.Length; i++)
                 transformedVectors[i] = InverseTransformVector(vectors[i]);
         }
-        
+
         public void InverseTransformVectors(Span<Vec3> vectors) => InverseTransformVectors(vectors, vectors);
 
         public Vec3 TransformPoint(Vec3 position) => this.localToWorldMatrix.MultiplyPoint3x4(position);
@@ -376,7 +377,7 @@ namespace CustomMath
             for (int i = 0; i < positions.Length; i++)
                 transformedPositions[i] = TransformPoint(positions[i]);
         }
-        
+
         public void TransformPoints(Span<Vec3> positions)
         {
             this.TransformPoints((ReadOnlySpan<Vec3>)positions, positions);
@@ -396,7 +397,7 @@ namespace CustomMath
             for (int i = 0; i < positions.Length; i++)
                 transformedPositions[i] = InverseTransformPoint(positions[i]);
         }
-        
+
         public void InverseTransformPoints(Span<Vec3> positions)
         {
             this.InverseTransformPoints((ReadOnlySpan<Vec3>)positions, positions);
@@ -450,20 +451,21 @@ namespace CustomMath
         public Transform GetChild(int index) => _children[index];
 
         public int GetChildCount() => _children.Count;
-        
+
         public bool IsChildOf(Transform parent)
         {
             if (parent == null)
                 return false;
-            
+
             Transform current = this.parent;
             while (current != null)
             {
-                if (current == parent) 
+                if (current == parent)
                     return true;
-                
+
                 current = current.parent;
             }
+
             return false;
         }
     }

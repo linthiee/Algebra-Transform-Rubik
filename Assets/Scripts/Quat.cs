@@ -284,7 +284,7 @@ public struct Quat
         return SlerpUnclamped(from, to, t);
     }
 
-    static Quat Slerp(Quat a, Quat b, float t)
+   public static Quat Slerp(Quat a, Quat b, float t)
     {
         return SlerpUnclamped(a, b, Mathf.Clamp01(t));
     }
