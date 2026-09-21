@@ -62,15 +62,15 @@ public class RubikController : MonoBehaviour
 
         if (Keyboard.current.wKey.wasPressedThisFrame)
             StartCoroutine(RotateFaceRoutine(axisUp, Vec3.Up, 90f, 0.5f));
-        if (Keyboard.current.sKey.wasPressedThisFrame)
+        else if (Keyboard.current.sKey.wasPressedThisFrame)
             StartCoroutine(RotateFaceRoutine(axisDown, Vec3.Down, 90f, 0.5f));
-        if (Keyboard.current.dKey.wasPressedThisFrame)
+        else if (Keyboard.current.dKey.wasPressedThisFrame)
             StartCoroutine(RotateFaceRoutine(axisRight, Vec3.Right, 90f, 0.5f));
-        if (Keyboard.current.aKey.wasPressedThisFrame)
+        else if (Keyboard.current.aKey.wasPressedThisFrame)
             StartCoroutine(RotateFaceRoutine(axisLeft, Vec3.Left, 90f, 0.5f));
-        if (Keyboard.current.qKey.wasPressedThisFrame)
+        else if (Keyboard.current.qKey.wasPressedThisFrame)
             StartCoroutine(RotateFaceRoutine(axisFront, Vec3.Forward, 90f, 0.5f));
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        else if (Keyboard.current.eKey.wasPressedThisFrame)
             StartCoroutine(RotateFaceRoutine(axisBack, Vec3.Back, 90f, 0.5f));
     }
 
@@ -117,7 +117,8 @@ public class RubikController : MonoBehaviour
 
         foreach (CustomTransformSync cubeSync in freeCubes)
         {
-            Vec3 localPosRelativeToRoot = root.customTransform.worldToLocalMatrix.MultiplyPoint3x4(cubeSync.customTransform.position);
+            Vec3 localPosRelativeToRoot =
+                root.customTransform.worldToLocalMatrix.MultiplyPoint3x4(cubeSync.customTransform.position);
 
             if (Vec3.Dot(localPosRelativeToRoot, expectedLocalDirection) > 0.5f)
             {
